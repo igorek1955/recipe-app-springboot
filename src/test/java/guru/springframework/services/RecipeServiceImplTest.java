@@ -1,5 +1,7 @@
 package guru.springframework.services;
 
+import guru.springframework.converter.RecipeCommandToRecipe;
+import guru.springframework.converter.RecipeToRecipeCommand;
 import guru.springframework.domain.Recipe;
 import guru.springframework.repositories.RecipeRepository;
 import org.junit.Before;
@@ -8,12 +10,18 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class RecipeServiceImplTest {
+
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
 
     RecipeServiceImpl recipeService;
     @Mock
@@ -22,7 +30,7 @@ public class RecipeServiceImplTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
@@ -37,5 +45,18 @@ public class RecipeServiceImplTest {
 
         //test if recipeRepository.findAll() was called only ONCE
         verify(recipeRepository, times(1)).findAll();
+    }
+
+    @Test
+    public void getRecipe(){
+        Recipe recipe = new Recipe();
+        recipe.setId(2L);
+        recipeRepository.save(recipe);
+        when(recipeRepository.findById(2L)).thenReturn(Optional.of(recipe));
+
+        Recipe returnRecipe = recipeService.findById(2L);
+        assertNotNull(returnRecipe);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
     }
 }
