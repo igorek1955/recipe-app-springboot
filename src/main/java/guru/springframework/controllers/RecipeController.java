@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @Controller
 public class RecipeController {
+
     private final RecipeService recipeService;
 
     public RecipeController(RecipeService recipeService) {
