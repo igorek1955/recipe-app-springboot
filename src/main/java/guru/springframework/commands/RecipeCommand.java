@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
-
+//question - зачем нужны команды
 @Getter
 @Setter
 @NoArgsConstructor
