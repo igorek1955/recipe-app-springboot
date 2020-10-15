@@ -18,6 +18,7 @@ public class ImageServiceImpl implements ImageService {
         this.recipeRepository = recipeRepository;
     }
 
+    //question - multipartfile можно использовать для загрузки любых типов файлов
     @Override
     public void saveImageFile(Long recipeId, MultipartFile file) {
 

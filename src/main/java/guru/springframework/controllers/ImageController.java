@@ -41,6 +41,7 @@ public class ImageController {
         return "redirect:/recipe/" + id + "/show";
     }
 
+    //question - как работает httpservletresponse, в каких ещё случаях использовать
     @GetMapping("recipe/{id}/recipeimage")
     public void renderImageFromDB(@PathVariable String id, HttpServletResponse response) throws IOException {
         RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(id));
