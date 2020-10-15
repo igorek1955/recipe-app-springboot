@@ -110,6 +110,7 @@ public class IngredientServiceImpl implements IngredientService {
         }
     }
 
+    //question - почему Optional?
     public void deleteById(long recipeId, long ingredientId) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(recipeId);
 
