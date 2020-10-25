@@ -18,7 +18,6 @@ public class ImageServiceImpl implements ImageService {
         this.recipeRepository = recipeRepository;
     }
 
-    //question - multipartfile можно использовать для загрузки любых типов файлов
     @Override
     public void saveImageFile(Long recipeId, MultipartFile file) {
 
@@ -36,7 +35,7 @@ public class ImageServiceImpl implements ImageService {
             recipeRepository.save(recipe);
 
         } catch (IOException e) {
-            //todo handle exception properly
+            log.warn("incorrect input");
             e.printStackTrace();
         }
     }

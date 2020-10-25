@@ -69,8 +69,11 @@ public class IngredientController {
     @RequestMapping("recipe/{recipeId}/ingredient/new")
     public String newRecipe(@PathVariable String recipeId, Model model){
         //make sure we have a good id value
+        if (recipeId.isEmpty()){
+            throw new NullPointerException("id is null");
+        }
         RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(recipeId));
-        //todo raise exception if null
+
 
         //need to return back parent id for hidden form property
         IngredientCommand ingredientCommand = new IngredientCommand();

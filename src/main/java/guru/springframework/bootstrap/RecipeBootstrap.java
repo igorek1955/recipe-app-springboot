@@ -29,7 +29,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         this.unitOfMeasureRepository = unitOfMeasureRepository;
     }
 
-    //question -  почему transactional и в реальных проектах необходимоли так же вручную всё заполнять?
+
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {

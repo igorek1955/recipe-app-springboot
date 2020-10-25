@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
-//question - зачем нужны команды
+
 @Getter
 @Setter
 @NoArgsConstructor
