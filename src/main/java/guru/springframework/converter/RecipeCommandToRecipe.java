@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-//question - зачем нужны команды и двусторонняя конвертация
+
 @Component
 public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
 

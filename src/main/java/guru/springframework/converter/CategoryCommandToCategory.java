@@ -5,7 +5,7 @@ import guru.springframework.domain.Category;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-//question - зачем нужны команды и двусторонняя конвертация
+
 @Component
 public class CategoryCommandToCategory implements Converter<CategoryCommand, Category> {
 
