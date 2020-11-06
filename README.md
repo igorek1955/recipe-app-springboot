@@ -9,15 +9,29 @@ This application supports:
 
 To select profile in IDE input profile name into active profiles field in run configuration.
 
-To configure connection to the database refer to application.properties. 
+To configure connection to the database refer to application-dev.yml or application-prod.yml, depending on the profile you selected. 
 ```
-# Connection url for the database "recipe"
-spring.datasource.url = jdbc:mysql://localhost:3306/recipe
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sfg_dev?useUnicode=true&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    username: *****
+    password: *****
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    show-sql: true
+    properties:
+      javax:
+        persistence:
+          schema-generation:
+            create-source: metadata
+            scripts:
+              action: create
+              create-target: guru_database_create.sql
+```
 
-# Username and password
-spring.datasource.username = root
-spring.datasource.password = root
-```
 
 # My Other Projects
 
