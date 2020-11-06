@@ -32,6 +32,19 @@ spring:
               create-target: guru_database_create.sql
 ```
 
+To deploy via Docker refer to the Dockerfile and configure it to your liking.
+
+```
+FROM openjdk:8
+ADD target/spring5-recipe-app-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8085
+ENTRYPOINT ["java", "-jar", "app.jar"]
+```
+To create and deploy image run these commands in the command line:
+```
+docker build -f Dockerfile -t recipe-app .
+docker run -p 8080:8080 -d recipe-app
+```
 
 # My Other Projects
 
